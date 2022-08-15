@@ -48,21 +48,7 @@ public class Enemy : MonoBehaviour
 
         CalculateMovemement();
        
-        /*
-                if(Time.time> _canfire)
-                {
-                    _firerate = Random.Range(3f, 7f);
-                    _canfire =  Time.time + _firerate;
-
-                   GameObject enemylaser =  Instantiate(_laserPrefab, transform.position + new Vector3(0, -1.6f, 0), Quaternion.identity);
-                    Laser[] lasers = enemylaser.GetComponentsInChildren<Laser>();
-                    for(int i = 1; i< lasers.Length; i++)
-                    {
-
-                        lasers[i].AssignEnemyLaser();
-                        Debug.Log("laser assignment Started");
-                    }
-                }*/
+       
 
     }
 

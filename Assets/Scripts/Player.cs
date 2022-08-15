@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
 
+    private float _thrusterSpeed = 7.0f;
+
     private Vector3 _spawnPosition = new Vector3(0 , .8f , 0);
 
     [SerializeField]
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _isshieldActive = false;
 
+    private bool _isspeedUpActive = false;
 
     private SpawnManager _spawnManager;
 
@@ -97,6 +100,17 @@ public class Player : MonoBehaviour
         {
             FireLaser();
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            SpeedThruster();
+   
+        }else if(_isspeedUpActive == false)
+        {
+              _speed = 3.5f;
+        }
+
+    
     }
 
     void CalculateMovement()
@@ -197,10 +211,12 @@ public class Player : MonoBehaviour
     }
     IEnumerator SpeedUpPowerupRoutine()
     {
+        _isspeedUpActive = true;
         _speed = 8.5f;
 
         yield return new WaitForSeconds(5);
 
+        _isspeedUpActive = false;
         _speed = 3.0f;
     }
 
@@ -219,4 +235,9 @@ public class Player : MonoBehaviour
     {
         return _score;
     }
+    public void SpeedThruster()
+    {
+        _speed = _thrusterSpeed;
+    }
+
 }
